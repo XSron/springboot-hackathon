@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	</head>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="./">Supplier & Product Management</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="./supplierlist">Supplier <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item active">
+	        <a class="nav-link" href="./productlist">Product <span class="sr-only">(current)</span></a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	<div class="container">
+		<h3 style="margin-left:15px; margin-top: 10px"> 
+			Add New Supplier
+		</h3>
+		<form th:action="@{/addsupplier}" th:object="${supplier}" method="post">
+			<div class="form-group col-md-4">
+				<label th:if="${#fields.hasErrors('supplierNumber')}" th:errors="*{supplierNumber}">Error Supplier Number</label>
+			    <label for="suppliernumber">Supplier Number</label>
+			    <input type="text" class="form-control" id="suppliernumber" th:field="*{supplierNumber}" th:value="*{supplierNumber}">
+			 </div>
+			 <div class="form-group col-md-4">
+			 	<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error Name</label>
+			    <label for="name">Name</label>
+			    <input type="text" class="form-control" id="name" th:field="*{name}" th:value="*{name}">
+			 </div>
+			 <div class="form-group col-md-4">
+			 	<label th:if="${#fields.hasErrors('contactPhoneNumber')}" th:errors="*{contactPhoneNumber}">Error Contact Number</label>
+			    <label for="contactPhoneNumber">Contact Number</label>
+			    <input type="text" class="form-control" id="contactNumber" th:field="*{contactPhoneNumber}" th:value="*{contactPhoneNumber}">
+			 </div>
+			 <div class="form-group col-md-4">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			 </div>
+		</form>
+	</div>
+</html>
