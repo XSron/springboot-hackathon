@@ -2,7 +2,6 @@ package edu.mum.cs.cs425.hackathon.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +30,7 @@ public class Product {
 	private int quantityInStock;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateSupplied;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "supplierid")
 	private Supplier supplier;
 	public Product() {}
