@@ -22,45 +22,58 @@
 	  </div>
 	</nav>
 	<div class="container">
-		<h3 style="margin-left:15px; margin-top: 10px"> 
+		<h3 style="margin-top: 10px"> 
 			Add New Product
 		</h3>
 		<form th:action="@{/addproduct}" th:object="${product}" method="post">
-			<div class="form-group col-md-4">
-				<label th:if="${#fields.hasErrors('productNumber')}" th:errors="*{productNumber}">Error Supplier Number</label>
-			    <label for="productNumber">Product Number</label>
-			    <input type="text" class="form-control" id="productNumber" th:field="*{productNumber}" th:value="*{productNumber}">
-			 </div>
-			 <div class="form-group col-md-4">
-			 	<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error Name</label>
-			    <label for="name">Name</label>
-			    <input type="text" class="form-control" id="name" th:field="*{name}" th:value="*{name}">
-			 </div>
-			 <div class="form-group col-md-4">
-			 	<label th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}">Error unitPrice</label>
-			    <label for="contactPhoneNumber">Unit  Price</label>
-			    <input type="text" class="form-control" id="unitPrice" th:field="*{unitPrice}" th:value="*{unitPrice}">
-			 </div>
-			 <div class="form-group col-md-4">
-			 	<label th:if="${#fields.hasErrors('quantityInStock')}" th:errors="*{quantityInStock}">Error quantityInStock</label>
-			    <label for="quantityInStock">Qty</label>
-			    <input type="text" class="form-control" id="quantityInStock" th:field="*{quantityInStock}" th:value="*{quantityInStock}">
-			 </div>
-			  <div class="form-group col-md-4">
-			  	<label>Supplier Name</label>
-			  	<div th:object="${supplier}">
-				 	<select th:field="*{supplierId}" th:value="*{supplierId}">
-				 		<option th:each="supplier, iter: ${suppliers}" th:value="${supplier.supplierId}" th:text="${supplier.name}" />
-				 	</select>
-			  	</div>
-			 </div>
-			 <div class="form-group col-md-4">
-			 	<label for="datesupplied">Date Supplied</label>
-			    <input type="date" class="form-control" id="datesupplied" th:field="*{dateSupplied}" th:value="*{dateSupplied}">
-			 </div>
-			 <div class="form-group col-md-4">
-				<button type="submit" class="btn btn-primary">Submit</button>
-			 </div>
+			<input type="hidden" th:field=*{productId}/>
+			<div class="row">
+				<div class="form-group col-md-4">
+					<label th:if="${#fields.hasErrors('productNumber')}" th:errors="*{productNumber}">Error Supplier Number</label>
+				    <label for="productNumber">Product Number</label>
+				    <input type="text" class="form-control" id="productNumber" th:field="*{productNumber}" th:value="*{productNumber}">
+				 </div>
+				 <div class="form-group col-md-4">
+				 	<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error Name</label>
+				    <label for="name">Name</label>
+				    <input type="text" class="form-control" id="name" th:field="*{name}" th:value="*{name}">
+				 </div>
+			</div>
+			
+			<div class="row">
+				 <div class="form-group col-md-4">
+				 	<label th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}">Error unitPrice</label>
+				    <label for="contactPhoneNumber">Unit  Price</label>
+				    <input type="text" class="form-control" id="unitPrice" th:field="*{unitPrice}" th:value="*{unitPrice}">
+				 </div>
+				 <div class="form-group col-md-4">
+				 	<label th:if="${#fields.hasErrors('quantityInStock')}" th:errors="*{quantityInStock}">Error quantityInStock</label>
+				    <label for="quantityInStock">Qty</label>
+				    <input type="text" class="form-control" id="quantityInStock" th:field="*{quantityInStock}" th:value="*{quantityInStock}">
+				 </div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-md-4">
+				  	<label>Supplier Name</label>
+				  	<div th:object="${supplier}">
+					 	<select th:field="*{supplierId}" th:value="*{supplierId}" class="form-control">
+					 		<option th:each="supplier, iter: ${suppliers}" th:value="${supplier.supplierId}" th:text="${supplier.name}" />
+					 	</select>
+				  	</div>
+				 </div>
+				 <div class="form-group col-md-4">
+				 	<label for="datesupplied">Date Supplied</label>
+				    <input type="date" class="form-control" id="datesupplied" th:field="*{dateSupplied}" th:value="*{dateSupplied}">
+				 </div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-md-8">
+					<button type="submit" class="btn btn-primary">Submit</button>
+				 </div>
+			</div>
+			 
 		</form>
 	</div>
 </html>

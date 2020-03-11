@@ -37,6 +37,7 @@
 					<th scope="col">Qty</th>
 					<th scope="col">Supplier</th>
 					<th scope="col">Date Supplied</th>
+					<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -53,6 +54,9 @@
 					<td scope="row" th:text="${product.quantityInStock}"></td>
 					<td scope="row" th:text="${product.supplier.name}"></td>
 					<td scope="row" th:text="${product.dateSupplied}"></td>
+					<td scope="row">
+						<a th:href="@{/editproduct(productid=${product.productId})}" class="btn btn-primary">Edit</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
